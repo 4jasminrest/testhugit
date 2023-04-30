@@ -1,0 +1,101 @@
+loginBaidu :
+  - title : 登录用例
+    description: 输入正确的用户名和密码，成功登录
+    cases :
+      - name : 打开登录页1
+        method : get_url
+        url : https://www.baidu.com/
+
+      - name : 打开登录连接1
+        method : click
+        locator : //*[@id="s-top-loginbtn"]
+
+      - name : 输入用户名1
+        method : input
+        locator : //*[@id="TANGRAM__PSP_11__userName"]
+        value : 13918599078
+
+      - name : 输入密码1
+        method : input
+        locator : //*[@id="TANGRAM__PSP_11__password"]
+        value : ywy148013@
+
+      - name : 点击登录按钮1
+        method : click
+        locator : //*[@id="TANGRAM__PSP_11__submit"]
+
+      - name :  登录时等待3秒
+        method : sleep
+        num : 5
+
+      - name : 滚动条
+        method : drag_and_drop_by_x
+        locator: css=.vcode-spin-button
+        x : 260
+        y : 0
+
+  - title : 登录成功后，搜索文本用例
+    description : 输入搜索文本，点击搜索，显示对应的搜索结果
+    cases:
+      - name : 输入搜索文本
+        method : input
+        locator : id=kw
+        value : selenium
+
+      - name : 点击搜索按钮
+        method : click
+        locator : id=su
+
+  - title : 登录失败
+    description: 输入错误的用户名，正确的密码，成功登录
+    cases :
+      - name : 打开登录页1
+        method : get_url
+        url : https://www.baidu.com/
+
+      - name : 打开登录连接1
+        method : click
+        locator : //*[@id="s-top-loginbtn"]
+
+      - name : 输入用户名1
+        method : input
+        locator : //*[@id="TANGRAM__PSP_11__userName"]
+        value : 139185990789
+
+      - name : 输入密码1
+        method : input
+        locator : //*[@id="TANGRAM__PSP_11__password"]
+        value : ywy148013@
+
+      - name : 点击登录按钮1
+        method : click
+        locator : //*[@id="TANGRAM__PSP_11__submit"]
+
+      - name :  登录时等待3秒
+        method : sleep
+        num : 10
+
+loginTaobao :
+  - title : 登录用例
+    cases :
+      - name : 打开taobao登录页
+        method : get_url
+        url : http://www.taobao.com
+
+      - name : 打开登录连接1
+        method : click
+        locator : //*[@id="J_SiteNavLogin"]/div[1]/div[1]/a[1]
+
+      - name : 输入淘宝用户
+        method : input
+        locator : //*[@id="fm-login-id"]
+        value : 13918599078
+
+      - name:  输入淘宝密码
+        method : input
+        locator : //*[@id="fm-login-password"]
+        value : 838586hu
+
+      - name : 点击 登录 按钮
+        method : click
+        locator : //*[@id="login-form"]/div[4]/button
