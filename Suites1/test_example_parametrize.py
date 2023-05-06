@@ -1,15 +1,16 @@
 import pytest
 import sys
 import allure
-import requests
+#import request
 import allure_pytest
-#from bases.common import *
+#from bases.common import *  #加了sys.path.append，此引入不需要了，否则jenkins报错找不到bases
 
 class Test_paramer:
 
-    sys.path.append('C:\\Users\\33196\\PycharmProjects\\pythonProjectSelenium\\bases')
+    #sys.path.append('C:\\Users\\33196\\PycharmProjects\\pythonProjectSelenium\\bases')
     def add(self,x,y):
         return x+y
+
     @pytest.fixture()
     def verify_type(self,a):
         if not (isinstance(a,int) or isinstance(a,float)):
@@ -49,12 +50,13 @@ class Test_paramer:
         # assert self.add(addPara[0],addPara[1])==addPara[2]
 
     #使用元组，元素是列表
-    @pytest.mark.parametrize('addPara',[[1,2,3],[1,3,4],[2,2,9]],ids=['tp1','tp2','tp3'])
+    @pytest.mark.parametrize('addPara',[[1,2,3],[1,3,4],[2,2,4]],ids=['tp1','tp2','tp3'])
     def test_parameter_tuple_list(self,addPara):
-        with allure.step('传递参数是{}....'.format(addPara)):
-              print('\n',addPara,end=',')
-        with allure.step('验证结果....'+self.verify(addPara[0],addPara[1],addPara[2])):
-               assert self.add(addPara[0],addPara[1])==addPara[2]
+        with allure.step('传递参数是....'):
+            print('\n',addPara,end=',')
+        #with allure.step('传递参数是{}....'.format(addPara)):
+        with allure.step('验证结果....'):
+            assert self.add(addPara[0],addPara[1])==addPara[2]
 
 
 pytest.main(['test_example_parametrize.py', '-s', '--alluredir', './tmp2'])

@@ -6,3 +6,4 @@ PYYAML
 pyautogui
 openpyxl
 pytest-ordering
+requests

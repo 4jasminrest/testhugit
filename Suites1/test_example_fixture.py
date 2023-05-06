@@ -30,9 +30,13 @@
 # def test_fruit_salad(fruit_bowl):
 #     fruit_salad = FruitSalad(*fruit_bowl)
 #     assert all(fruit.cubed for fruit in fruit_salad.fruit)
+import logging
 import allure
 import pytest
 import os
+from logging.handlers import *
+
+from utils.log_util import logger
 
 
 @pytest.fixture()
@@ -63,10 +67,14 @@ def order1(request):
 @allure.severity('normal')
 @allure.description('测试fixture函数，测试函数调用fixture函数，返回值转给测试函数。测试函数执行之前先执行fixture函数')
 def test_order1(order1):
-    print('order....', order1)
-   # with allure.step('测试步骤'):
+    logger.info(order1)
+    print('ddddddddddddddddddddddddddddd')
+
+    #with allure.step('打印'):
+        #print('order....',  order1)
+# with allure.step('测试步骤'):
 
 
 #if __name__=='__main__':
 pytest.main(['test_example_fixture.py', '-s', '--alluredir', './tmp2'])
-#os.system('allure generate ./tmp2 -o ./report2 --clean')
+os.system('allure generate ./tmp2 -o ./report2 --clean')
